@@ -16,11 +16,14 @@ function gameLoop(delta)
 
 var caf = new CappedAnimationFrames(gameLoop, 30);
 caf.start();
-// the gameLoop() function is now running at about 30 fps if the computer can handle it.
+// the gameLoop() function is now running at a max of about 30 fps.
 
 caf.setFPS(45);
-// the gameLoop() function is now running at a max of 45 fps.
+// the gameLoop() function is now running at a max of 45 fps without needing to be stopped. (is that a thing people need? changing fps on the fly? *shrug*)
 
 caf.setFPS(0);
 // the gameLoop() function is now running as fast as requestAnimationFrame() will allow (probably about 60 fps)
+
+caf.stop();
+// the gameLoop() function has now stopped running at regular intervals.
 ```
