@@ -10,7 +10,7 @@ Just provide the `CappedAnimationFrames` constructor with a function object and 
 function gameLoop(delta)
 {
   // take user input
-  // update objects
+  // update objects with delta
   // draw objects
 }
 
