@@ -4,7 +4,7 @@ A simple JavaScript class that contains the standard boilerplate code for using 
 Check out the demo on [jsfiddle](https://jsfiddle.net/iAmMortos/8boxnr25/show/).
 
 ## See? It's easy!
-Just provide the CappedAnimationFrames constructor with a function object and an optional capped FPS. Then call the `start()` function. Bam.
+Just provide the `CappedAnimationFrames` constructor with a function object and an optional capped FPS (default uncapped), then call the `start()` function. Bam.
 ```js
 // The delta is the time since the last frame in miliseconds
 function gameLoop(delta)
