@@ -1,7 +1,7 @@
 function SimpleDrawExample()
 {
-	var _self = this;
-	this.canvas = $("#drawing")[0];
+  var _self = this;
+  this.canvas = $("#drawing")[0];
   this.ctx = this.canvas.getContext("2d");
   
   var thisTick = 0;
@@ -35,14 +35,14 @@ function SimpleDrawExample()
   };
   this.gameLoop = function(delta)
   {
-  	lastTick = thisTick;
+    lastTick = thisTick;
     thisTick = Date.now();
     tickTimes.push(1000 / (thisTick - lastTick));
     while (tickTimes.length > maxTicks)
-    	tickTimes.shift();
+      tickTimes.shift();
     totalTickTimes = tickTimes[0];
     for(var i = 1; i < tickTimes.length; i++)
-    	totalTickTimes += tickTimes[i];
+      totalTickTimes += tickTimes[i];
     averageTick = Math.floor((totalTickTimes / tickTimes.length) * 100) / 100;
     
     _self.updateSquare(delta);
@@ -50,7 +50,7 @@ function SimpleDrawExample()
   };
   this.resetTickTimes = function()
   {
-  	tickTimes = [];
+    tickTimes = [];
     averageTick = 0;
   }
   
