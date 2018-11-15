@@ -1,9 +1,10 @@
 /***
-	CappedAnimationFrames(func[, fps = 0])
+	CappedAnimationFrames(func[, obj[,  fps = 0]])
   desc: This class wraps up the boilerplate code for using the window.requestAnimationFrame() function
   			with an easy interface and provides the ability to throttle the framerate.
-  	func	- The function that will be run every frame
-    fps   - The FPS cap desired (0 or blank for uncapped)
+  	func  - The function that will be run every frame
+  	obj   - The object that should call the given function (If "this")
+  	fps   - The FPS cap desired (0 or blank for uncapped)
     
 	.start([fps])
   desc: Begins the requests for animation frames at the set framerate
@@ -19,13 +20,12 @@
   .isRunning()
   desc: returns the current running state of the CappedAnimationFrames instance
 ***/
-function CappedAnimationFrames(func, fps)
+function CappedAnimationFrames(func, obj, fps)
 {
-	var maxFPS = typeof fps !== 'undefined' ? fps : 0;
-  var fn = func; // The function that will be run every frame. Has a delta parameter for time difference in ms
+	var maxFPS = fps !== null ? fps : 0;
   
   // If a function is not provided, throw an error.
-  if (typeof fn === 'undefined')
+  if (func === null)
   	throw "CappedAnimationFrames constructor: You must provide a function to be executed.";
   
   var running = false;
@@ -58,7 +58,11 @@ function CappedAnimationFrames(func, fps)
     {
     	// adjust the tickThen time by how far OVER the tickInterval we went.
       tickThen = tickNow - (tickInterval !== 0 ? (tickDelta % tickInterval) : 0);
-      fn(tickDelta);
+      
+      if (obj === null)
+        func(tickDelta);
+      else
+        func.call(obj, tickDelta);
     }
   }
   
