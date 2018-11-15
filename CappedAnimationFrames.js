@@ -2,9 +2,9 @@
 	CappedAnimationFrames(func[, obj[,  fps = 0]])
   desc: This class wraps up the boilerplate code for using the window.requestAnimationFrame() function
   			with an easy interface and provides the ability to throttle the framerate.
-  	func  - The function that will be run every frame
-  	obj   - The object that should call the given function (If "this")
-  	fps   - The FPS cap desired (0 or blank for uncapped)
+  	func	- The function that will be run every frame
+    obj   - The object that should call the given function (If "this")
+    fps   - The FPS cap desired (0 or blank for uncapped)
     
 	.start([fps])
   desc: Begins the requests for animation frames at the set framerate
@@ -22,7 +22,7 @@
 ***/
 function CappedAnimationFrames(func, obj, fps)
 {
-	var maxFPS = fps !== null ? fps : 0;
+	var maxFPS = typeof fps !== 'undefined' ? fps : 0;
   
   // If a function is not provided, throw an error.
   if (func === null)
